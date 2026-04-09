@@ -3,6 +3,7 @@ import cors from 'cors'
 import express from 'express'
 import { createThrottle } from './middleware/createThrottle.js'
 import { analyzeCandidateFit } from './services/geminiAnalysis.js'
+import { sanitizeErrorMessage } from './utils/sanitizeError.js'
 
 const app = express()
 const port = Number(process.env.PORT || 3001)
@@ -51,13 +52,15 @@ app.post('/analyze', requestThrottle, async (request, response) => {
 
     response.json(result)
   } catch (error) {
+    // Never log the full error object to avoid leaking sensitive data
     const message = error instanceof Error ? error.message : 'Analysis failed.'
     const isConfigError = message.includes('GEMINI_API_KEY')
+    const sanitizedMessage = sanitizeErrorMessage(message)
 
     response.status(isConfigError ? 500 : 502).json({
       error: isConfigError
         ? 'Server is missing GEMINI_API_KEY in the local .env file.'
-        : 'Gemini Flash request failed. Check the server logs and API key configuration.',
+        : sanitizedMessage || 'Gemini Flash request failed. Check the server logs and API key configuration.',
     })
   }
 })

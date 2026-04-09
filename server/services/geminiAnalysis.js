@@ -4,6 +4,13 @@ import {
   normalizeAnalysis,
 } from '../../src/prompts/analyzePrompt.js'
 
+/**
+ * Service for analyzing candidate-job fit using Gemini Flash.
+ *
+ * IMPORTANT: Never log error objects directly. Always use sanitizeErrorMessage()
+ * from server/utils/sanitizeError.js before logging or sending to clients.
+ * This prevents accidental exposure of API keys and sensitive environment data.
+ */
 const FLASH_MODEL = 'gemini-2.5-flash'
 
 let aiClient

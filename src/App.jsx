@@ -85,7 +85,7 @@ function App() {
     <div className="app-shell">
       <section className="hero-panel">
         <p className="eyebrow">TPM Job Match AI</p>
-        <h1>Compare a resume against a job description with Gemini Flash.</h1>
+        <h1>Compare a resume against a job description with AI analysis.</h1>
         <p className="lede">
           Paste both documents, send them to a local Express backend, and get a
           structured hiring-style evaluation with clear strengths, gaps, and
