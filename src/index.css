@@ -1,0 +1,106 @@
+:root {
+  --text: #5c534b;
+  --heading-color: #211b18;
+  --bg: #f4ede3;
+  --panel: rgba(255, 247, 238, 0.9);
+  --border: rgba(55, 50, 47, 0.12);
+  --accent: #185d48;
+  --muted: #8b6f5b;
+  --shadow:
+    0 24px 80px rgba(95, 66, 38, 0.14), 0 8px 24px rgba(65, 47, 28, 0.08);
+
+  --sans: 'Avenir Next', 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --heading: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+  --mono: 'SFMono-Regular', 'IBM Plex Mono', Consolas, monospace;
+
+  font: 18px/1.55 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(201, 126, 85, 0.22), transparent 24%),
+    radial-gradient(circle at top right, rgba(24, 93, 72, 0.2), transparent 25%),
+    linear-gradient(180deg, #fbf4ea 0%, #f4ede3 100%);
+}
+
+#root {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 40px;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+h1 {
+  font-size: clamp(2.9rem, 8vw, 5.1rem);
+  letter-spacing: -0.05em;
+  line-height: 0.96;
+  margin: 10px 0 18px;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+  }
+}
+
+h2 {
+  font-size: 1.9rem;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+h3 {
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+p {
+  margin: 0;
+}
+
+textarea,
+button,
+pre {
+  font-family: var(--mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+textarea {
+  appearance: none;
+}
+
+::selection {
+  background: rgba(24, 93, 72, 0.18);
+}
+
+@media (max-width: 720px) {
+  #root {
+    width: min(100% - 20px, 1180px);
+    padding-top: 20px;
+  }
+}
